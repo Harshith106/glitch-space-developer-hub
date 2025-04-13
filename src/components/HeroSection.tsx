@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import * as THREE from 'three';
 import { FileText } from 'lucide-react';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
 
 const HeroSection = () => {
   const hologramRef = useRef<HTMLDivElement>(null);
@@ -123,24 +124,37 @@ const HeroSection = () => {
             </motion.div>
           </div>
           
+          {/* New transparent PNG profile image */}
           <motion.div 
-            className="relative flex justify-center items-center"
+            className="relative flex justify-end items-center"
             variants={itemVariants}
-            whileHover={{ scale: 1.05 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.2 }}
+            whileInView={{ y: [20, 0] }}
           >
-            <div 
-              className="relative w-72 h-72 md:w-80 md:h-80 border-4 border-cyber-pink rounded-lg 
-                overflow-hidden cyber-glow-box-pink hover-glow-pink cyber-corners"
-            >
-              <div className="p-4 h-full flex flex-col justify-end">
-                <img src="/myImage.png" alt="" className="w-full h-full object-cover absolute inset-0"/>
-                <div className="border-t border-cyber-cyan w-16 mb-2"></div>
-              </div>
+            <div className="w-full max-w-md pr-4 sm:pr-8 md:pr-12">
+              <AspectRatio
+                ratio={1/1}
+                className="overflow-hidden flex justify-center items-center"
+              >
+                <motion.img 
+                  src="/myImage.png" 
+                  alt="P.Harshith Profile" 
+                  className="w-full h-full object-contain"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ 
+                    duration: 1.5,
+                    ease: "easeInOut"
+                  }}
+                />
+              </AspectRatio>
             </div>
             
-            {/* Decorative elements */}
+            {/* Cyberpunk-style decorative elements */}
             <motion.div 
-              className="absolute -top-10 -right-10 w-40 h-40 border border-cyber-cyan opacity-20"
+              className="absolute -top-10 -right-5 md:-right-10 w-32 md:w-40 h-32 md:h-40 border border-cyber-cyan opacity-20"
               animate={{ 
                 rotate: [0, 90],
                 opacity: [0.2, 0.4, 0.2]
@@ -148,7 +162,7 @@ const HeroSection = () => {
               transition={{ duration: 10, repeat: Infinity }}
             />
             <motion.div 
-              className="absolute -bottom-10 -left-10 w-40 h-40 border border-cyber-pink opacity-20"
+              className="absolute -bottom-10 right-5 md:-left-10 w-32 md:w-40 h-32 md:h-40 border border-cyber-pink opacity-20"
               animate={{ 
                 rotate: [0, -90],
                 opacity: [0.2, 0.4, 0.2]
