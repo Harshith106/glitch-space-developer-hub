@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import * as THREE from 'three';
@@ -77,7 +76,7 @@ const HeroSection = () => {
     <section id="home" className="min-h-screen flex items-center relative overflow-hidden pt-20">
       <div className="container mx-auto px-4 md:px-8 relative z-10">
         <motion.div 
-          className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -124,7 +123,6 @@ const HeroSection = () => {
             </motion.div>
           </div>
           
-          {/* Scaled profile image */}
           <motion.div 
             className="relative flex justify-end items-center"
             variants={itemVariants}
@@ -139,7 +137,7 @@ const HeroSection = () => {
             }}
             whileInView={{ y: [20, 0] }}
           >
-            <div className="w-full max-w-lg pr-4 sm:pr-8 md:pr-12">
+            <div className="w-full max-w-[32rem] pr-0">
               <AspectRatio
                 ratio={1/1}
                 className="overflow-hidden flex justify-center items-center"
@@ -158,7 +156,6 @@ const HeroSection = () => {
               </AspectRatio>
             </div>
             
-            {/* Cyberpunk-style decorative elements */}
             <motion.div 
               className="absolute -top-10 -right-5 md:-right-10 w-32 md:w-40 h-32 md:h-40 border border-cyber-cyan opacity-20"
               animate={{ 
@@ -179,7 +176,6 @@ const HeroSection = () => {
         </motion.div>
       </div>
       
-      {/* Decorative grid lines */}
       <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-cyber-black to-transparent"></div>
     </section>
   );
