@@ -1,5 +1,5 @@
 
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import * as THREE from 'three';
 import { FileText } from 'lucide-react';
@@ -124,16 +124,22 @@ const HeroSection = () => {
             </motion.div>
           </div>
           
-          {/* New transparent PNG profile image */}
+          {/* Scaled profile image */}
           <motion.div 
             className="relative flex justify-end items-center"
             variants={itemVariants}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.2 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ 
+              opacity: 1, 
+              scale: 1,
+              transition: { 
+                duration: 1, 
+                ease: "easeOut" 
+              }
+            }}
             whileInView={{ y: [20, 0] }}
           >
-            <div className="w-full max-w-md pr-4 sm:pr-8 md:pr-12">
+            <div className="w-full max-w-lg pr-4 sm:pr-8 md:pr-12">
               <AspectRatio
                 ratio={1/1}
                 className="overflow-hidden flex justify-center items-center"
